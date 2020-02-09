@@ -18,7 +18,7 @@ public class Client {
         System.setProperty("javax.net.ssl.trustStore", TRUST_STORE_LOCATION);
         System.setProperty("javax.net.ssl.trustStorePassword", TRUST_STORE_PASSWORD);
 
-        InputStream is = new ByteArrayInputStream(RequestConstants.request_ST_RST.getBytes());
+        InputStream is = new ByteArrayInputStream(Constants.request_ST_RST.getBytes());
         SOAPMessage request = MessageFactory.newInstance().createMessage(null, is);
 
         callSoapWebService(STS_ENDPOINT_URL, request);

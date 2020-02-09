@@ -1,4 +1,4 @@
-public class RequestConstants {
+public class Constants {
 
     public static String request_ST_RST = "<soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
             "   <soapenv:Header xmlns:wsa=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\">\n" +
