@@ -1,4 +1,12 @@
+package constants;
+
+import java.io.File;
+
 public class Constants {
+
+    public static final String TRUST_STORE_LOCATION =  new File("src/resources/wso2carbon.jks").getAbsolutePath();
+    public static final String TRUST_STORE_PASSWORD = "wso2carbon";
+    public static final String STS_ENDPOINT_URL = "https://localhost:9443/services/wso2carbon-sts";
 
     public static String request_ST_RST = "<soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
             "   <soapenv:Header xmlns:wsa=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\">\n" +
