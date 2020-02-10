@@ -1,7 +1,19 @@
 package constants;
 
+/**
+ * Requests class builds the RequestSecurityTokens for each action performed.
+ */
 public class Requests {
 
+    /**
+     * Build a RST which is required for requesting a security token
+     * from the Security Token Service.
+     *
+     * @param creationTime Creation time of the Request Security Token.
+     * @param expiryTime   Expiry time of the Request Security Token.
+     * @return A soap request containing the Request Security Token
+     * used to request a security token.
+     */
     public static String buildRSTToRequestSecurityToken(String creationTime, String expiryTime) {
 
         return "<soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
@@ -46,6 +58,16 @@ public class Requests {
                 "</soapenv:Envelope>";
     }
 
+    /**
+     * Build a RST which is required for renewing a security token from
+     * the Security Token Service.
+     *
+     * @param creationTime Creation time of the Request Security Token.
+     * @param expiryTime   Expiry time of the Request Security Token.
+     * @param uri          Identifier for the Security Token.
+     * @return A soap request containing the Request Security Token used
+     * to renew a security token.
+     */
     public static String buildRSTToRenewSecurityToken(String creationTime, String expiryTime, String uri) {
 
         return "<soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\">\n" +
@@ -91,6 +113,16 @@ public class Requests {
                 "</soapenv:Envelope>\n";
     }
 
+    /**
+     * Build a RST which is required for validating a security token
+     * from the Security Token Service.
+     *
+     * @param creationTime Creation time of the Request Security Token.
+     * @param expiryTime   Expiry time of the Request Security Token.
+     * @param uri          Identifier for the Security Token.
+     * @return A soap request containing the Request Security Token used
+     * to validate a security token.
+     */
     public static String buildRSTToValidateSecurityToken(String creationTime, String expiryTime, String uri) {
 
         return "<soapenv:Envelope xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\">\n" +

@@ -24,8 +24,23 @@ import static constants.Constants.STS_ENDPOINT_URL;
 import static constants.Constants.TRUST_STORE_LOCATION;
 import static constants.Constants.TRUST_STORE_PASSWORD;
 
+/**
+ * Utils class used by the Client to perform common operations.
+ */
 public class ClientUtils {
 
+    /**
+     * Method used to invoke the SOAP web service of WSO2 Identity Server
+     * with the help of a SOAP connection.
+     *
+     * @param action     Action to be performed.
+     * @param parameters Identifier for the Security Token.
+     * @return soapResponse containing the Request Security Token Response
+     * obtained from the Security Token Service.
+     *
+     * @throws WSTrustClientException if there are any exceptions throws while
+     *                                building and sending the request.
+     */
     public static SOAPMessage callSoapWebService(String action, String... parameters)
             throws WSTrustClientException {
 
@@ -53,14 +68,29 @@ public class ClientUtils {
             soapResponse = soapConnection.call(soapRequest, STS_ENDPOINT_URL);
 
             soapConnection.close();
-        } catch (Exception e) {
-            throw new WSTrustClientException("An error occurred while sending SOAP Request to " +
-                    "Server. Make sure you have the correct SOAPAction", e);
+        } catch (SOAPException e) {
+            throw new WSTrustClientException("Error while initializing the SOAP Factory.", e);
+        } catch (IOException e) {
+            throw new WSTrustClientException("Error occurred while creating a SOAP Message from an input stream.", e);
         }
 
         return soapResponse;
     }
 
+    /**
+     * Method used to build the RST relevant to the action to be performed.
+     *
+     * @param parameter            Action to be performed.
+     * @param additionalParameters Identifier for the Security Token.
+     * @return request SOAP request containing the Request Security Token.
+     *
+     * @throws IOException            if an error occurs while creating a SOAP Message
+     *                                from an input stream.
+     * @throws SOAPException          if there was an error in creating the specified
+     *                                implementation of MessageFactory.
+     * @throws WSTrustClientException if the operation/action type specified
+     *                                is not valid.
+     */
     private static SOAPMessage buildRequest(String parameter, String... additionalParameters)
             throws IOException, SOAPException, WSTrustClientException {
 
@@ -96,6 +126,9 @@ public class ClientUtils {
         return request;
     }
 
+    /**
+     * Set system properties to use a custom trust store instead of the default.
+     */
     private static void setSystemProperties() {
 
 //        Enable this property to debug ssl related problems
@@ -104,19 +137,26 @@ public class ClientUtils {
         System.setProperty("javax.net.ssl.trustStorePassword", TRUST_STORE_PASSWORD);
     }
 
+    /**
+     * Generate new timestamps for the creation and expiry time of the
+     * Request Security Token.
+     *
+     * @return timestamps string[] containing the timestamps for creation
+     * and expiry time of the RequestSecurityToken.
+     */
     private static String[] generateNewTimeStamps() {
 
-        String[] timeStamps = new String[2];
+        String[] timestamps = new String[2];
 
         TimeZone timeZone = TimeZone.getTimeZone("UTC");
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         dateFormat.setTimeZone(timeZone);
 
         Calendar calendar = Calendar.getInstance();
-        timeStamps[0] = dateFormat.format(calendar.getTime());
+        timestamps[0] = dateFormat.format(calendar.getTime());
         calendar.add(Calendar.MINUTE, 5);
-        timeStamps[1] = dateFormat.format(calendar.getTime());
+        timestamps[1] = dateFormat.format(calendar.getTime());
 
-        return timeStamps;
+        return timestamps;
     }
 }
