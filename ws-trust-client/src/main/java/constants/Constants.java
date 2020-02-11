@@ -26,4 +26,7 @@ public class Constants {
     public static final String REQUEST_ST_TEMPLATE = "request_security_token_RST.xml";
     public static final String RENEW_ST_TEMPLATE = "renew_security_token_RST.xml";
     public static final String VALIDATE_ST_TEMPLATE = "validate_security_token_RST.xml";
+
+    public static final String GREEN_COLOR = "\033[1;32m";
+    public static final String RESET_COLOR = "\033[0m";
 }
