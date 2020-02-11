@@ -1,5 +1,7 @@
 import exception.WSTrustClientException;
+import org.apache.velocity.Template;
 import util.ClientUtils;
+import util.RequestConstructor;
 
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
@@ -42,7 +44,6 @@ public class Client {
         } catch (WSTrustClientException e) {
             e.printStackTrace();
         }
-
 
     }
 }

@@ -7,6 +7,7 @@ import javax.xml.soap.SOAPConstants;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
@@ -14,14 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import constants.Requests;
 import exception.WSTrustClientException;
 
 import static constants.Constants.ACTION_RENEW;
 import static constants.Constants.ACTION_REQUEST;
 import static constants.Constants.ACTION_VALIDATE;
 import static constants.Constants.STS_ENDPOINT_URL;
-import static constants.Constants.TRUST_STORE_LOCATION;
+import static constants.Constants.TRUST_STORE;
 import static constants.Constants.TRUST_STORE_PASSWORD;
 
 /**
@@ -37,7 +37,6 @@ public class ClientUtils {
      * @param parameters Identifier for the Security Token.
      * @return soapResponse containing the Request Security Token Response
      * obtained from the Security Token Service.
-     *
      * @throws WSTrustClientException if there are any exceptions throws while
      *                                building and sending the request.
      */
@@ -83,7 +82,6 @@ public class ClientUtils {
      * @param parameter            Action to be performed.
      * @param additionalParameters Identifier for the Security Token.
      * @return request SOAP request containing the Request Security Token.
-     *
      * @throws IOException            if an error occurs while creating a SOAP Message
      *                                from an input stream.
      * @throws SOAPException          if there was an error in creating the specified
@@ -101,17 +99,17 @@ public class ClientUtils {
         switch (parameter) {
 
             case ACTION_REQUEST:
-                byteArrayInputStream = new ByteArrayInputStream(Requests
+                byteArrayInputStream = new ByteArrayInputStream(RequestConstructor
                         .buildRSTToRequestSecurityToken(timeStamps[0], timeStamps[1]).getBytes());
                 break;
 
             case ACTION_RENEW:
-                byteArrayInputStream = new ByteArrayInputStream(Requests
+                byteArrayInputStream = new ByteArrayInputStream(RequestConstructor
                         .buildRSTToRenewSecurityToken(timeStamps[0], timeStamps[1], additionalParameters[0]).getBytes());
                 break;
 
             case ACTION_VALIDATE:
-                byteArrayInputStream = new ByteArrayInputStream(Requests
+                byteArrayInputStream = new ByteArrayInputStream(RequestConstructor
                         .buildRSTToValidateSecurityToken(timeStamps[0], timeStamps[1], additionalParameters[0]).getBytes());
                 break;
 
@@ -131,9 +129,12 @@ public class ClientUtils {
      */
     private static void setSystemProperties() {
 
+        ClassLoader classLoader = ClientUtils.class.getClassLoader();
+
 //        Enable this property to debug ssl related problems
 //        System.setProperty("javax.net.debug", "ssl");
-        System.setProperty("javax.net.ssl.trustStore", TRUST_STORE_LOCATION);
+        System.setProperty("javax.net.ssl.trustStore", new File(classLoader
+                .getResource(TRUST_STORE).getPath()).getAbsolutePath());
         System.setProperty("javax.net.ssl.trustStorePassword", TRUST_STORE_PASSWORD);
     }
 
