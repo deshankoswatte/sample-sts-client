@@ -56,7 +56,7 @@ public class RequestConstructor {
      *
      * @param creationTime Creation time of the Request Security Token.
      * @param expiryTime   Expiry time of the Request Security Token.
-     * @param uri          Identifier for the Security Token.
+     * @param uri          Identifier for the Security Token  to be validated.
      * @return A soap request containing the Request Security Token used
      * to renew a security token.
      */
@@ -81,7 +81,7 @@ public class RequestConstructor {
      *
      * @param creationTime Creation time of the Request Security Token.
      * @param expiryTime   Expiry time of the Request Security Token.
-     * @param uri          Identifier for the Security Token.
+     * @param uri          Identifier for the Security Token to be validated.
      * @return A soap request containing the Request Security Token used
      * to validate a security token.
      */
@@ -100,6 +100,10 @@ public class RequestConstructor {
         return stringWriter.toString();
     }
 
+    /**
+     * Initialize the velocity engine if it is not initialized yet to
+     * use functions based on templating.
+     */
     private static void initVelocityEngine() {
 
         if (!isVEInitialized) {
@@ -119,6 +123,9 @@ public class RequestConstructor {
         }
     }
 
+    /**
+     * Clear the string writer after it has been used previously.
+     */
     private static void clearStringWriter() {
 
         if (stringWriter.getBuffer().length() > 0) {
