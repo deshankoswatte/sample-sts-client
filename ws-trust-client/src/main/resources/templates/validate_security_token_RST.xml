@@ -4,13 +4,13 @@
                        soapenv:mustUnderstand="true">
             <wsu:Timestamp
                     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-                    wsu:Id="Timestamp-3">
-                <wsu:Created>2020-02-07T04:45:02.197Z</wsu:Created>
-                <wsu:Expires>2020-02-07T04:50:02.197Z</wsu:Expires>
+                    wsu:Id="Timestamp-5">
+                <wsu:Created>$creationTime</wsu:Created>
+                <wsu:Expires>$expiryTime</wsu:Expires>
             </wsu:Timestamp>
             <wsse:UsernameToken
                     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-                    wsu:Id="UsernameToken-4">
+                    wsu:Id="UsernameToken-6">
                 <wsse:Username>admin</wsse:Username>
                 <wsse:Password
                         Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
@@ -22,20 +22,20 @@
         <wsa:ReplyTo>
             <wsa:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:Address>
         </wsa:ReplyTo>
-        <wsa:MessageID>urn:uuid:de5c56ea-0632-44c2-b455-984107d67763</wsa:MessageID>
-        <wsa:Action>http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue</wsa:Action>
+        <wsa:MessageID>urn:uuid:dc9ae405-d1d2-4ff2-ba55-3ff27e0544b3</wsa:MessageID>
+        <wsa:Action>http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Validate</wsa:Action>
     </soapenv:Header>
     <soapenv:Body>
         <wst:RequestSecurityToken xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust">
-            <wst:RequestType>http://schemas.xmlsoap.org/ws/2005/02/trust/Renew</wst:RequestType>
-            <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
-            <wst:RenewTarget>
+            <wst:RequestType>http://schemas.xmlsoap.org/ws/2005/02/trust/Validate</wst:RequestType>
+            <wst:TokenType>http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Status</wst:TokenType>
+            <wst:ValidateTarget>
                 <wsse:SecurityTokenReference
                         xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                    <wsse:Reference URI="urn:uuid:A5571AE6A8827AE3841581050702133"
+                    <wsse:Reference URI="$uri"
                                     ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0"/>
                 </wsse:SecurityTokenReference>
-            </wst:RenewTarget>
+            </wst:ValidateTarget>
         </wst:RequestSecurityToken>
     </soapenv:Body>
 </soapenv:Envelope>

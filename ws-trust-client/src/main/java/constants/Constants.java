@@ -1,14 +1,12 @@
 package constants;
 
-import java.io.File;
-
 /**
  * Class contains the constant values used across the module.
  */
 public class Constants {
 
-    // Trust store location.
-    public static final String TRUST_STORE_LOCATION = new File("src/resources/wso2carbon.jks").getAbsolutePath();
+    // Trust store name.
+    public static final String TRUST_STORE = "wso2carbon.jks";
     // Trust store password.
     public static final String TRUST_STORE_PASSWORD = "wso2carbon";
     // Security token service endpoint of WSO2 Identity Server.
@@ -18,4 +16,14 @@ public class Constants {
     public static final String ACTION_REQUEST = "Request";
     public static final String ACTION_RENEW = "Renew";
     public static final String ACTION_VALIDATE = "Validate";
+
+    // Attributes for templating.
+    public static final String CREATION_TIME = "creationTime";
+    public static final String EXPIRY_TIME = "expiryTime";
+    public static final String URI = "uri";
+
+    // Template file names.
+    public static final String REQUEST_ST_TEMPLATE = "request_security_token_RST.xml";
+    public static final String RENEW_ST_TEMPLATE = "renew_security_token_RST.xml";
+    public static final String VALIDATE_ST_TEMPLATE = "validate_security_token_RST.xml";
 }

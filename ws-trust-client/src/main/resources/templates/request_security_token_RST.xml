@@ -5,8 +5,8 @@
             <wsu:Timestamp
                     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
                     wsu:Id="Timestamp-1">
-                <wsu:Created>2020-02-07T04:45:01.868Z</wsu:Created>
-                <wsu:Expires>2020-02-07T04:50:01.868Z</wsu:Expires>
+                <wsu:Created>$creationTime</wsu:Created>
+                <wsu:Expires>$expiryTime</wsu:Expires>
             </wsu:Timestamp>
             <wsse:UsernameToken
                     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
@@ -36,11 +36,11 @@
             <wst:Lifetime>
                 <wsu:Created
                         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                    2020-02-07T04:45:01.651Z
+                    $creationTime
                 </wsu:Created>
                 <wsu:Expires
                         xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                    2020-02-07T04:50:01.651Z
+                    $expiryTime
                 </wsu:Expires>
             </wst:Lifetime>
             <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
