@@ -35,15 +35,19 @@ public class ClientUtils {
      *
      * @param action     Action to be performed.
      * @param parameters Identifier for the Security Token.
-     * @return soapResponse containing the Request Security Token Response
-     * obtained from the Security Token Service.
+     * @return a string[] containing the soapRequest containing the Request
+     * Security Token sent to the Security Token Service and the soapResponse
+     * containing the Request Security Token Response obtained from the
+     * Security Token Service.
      * @throws WSTrustClientException if there are any exceptions throws while
      *                                building and sending the request.
      */
-    public static SOAPMessage callSoapWebService(String action, String... parameters)
+    public static SOAPMessage[] callSoapWebService(String action, String... parameters)
             throws WSTrustClientException {
 
         setSystemProperties();
+
+        SOAPMessage[] requestAndResponse = new SOAPMessage[2];
 
         SOAPMessage soapRequest;
         SOAPMessage soapResponse;
@@ -73,7 +77,10 @@ public class ClientUtils {
             throw new WSTrustClientException("Error occurred while creating a SOAP Message from an input stream.", e);
         }
 
-        return soapResponse;
+        requestAndResponse[0] = soapRequest;
+        requestAndResponse[1] = soapResponse;
+
+        return requestAndResponse;
     }
 
     /**
