@@ -4,7 +4,6 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
-import java.io.File;
 import java.io.StringWriter;
 import java.util.Properties;
 
@@ -108,10 +107,9 @@ public class RequestConstructor {
 
         if (!isVEInitialized) {
 
-            ClassLoader classLoader = RequestConstructor.class.getClassLoader();
             Properties properties = new Properties();
-            String path = new File(classLoader.getResource("templates").getPath()).getAbsolutePath();
-            properties.put("file.resource.loader.path", path);
+            properties.setProperty("resource.loader", "class");
+            properties.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
 
             velocityEngine.init(properties);
 

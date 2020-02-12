@@ -1,5 +1,8 @@
 package org.wso2.samples.is.sts.wstrust.client.util;
 
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
@@ -7,9 +10,12 @@ import javax.xml.soap.SOAPConstants;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.security.KeyStore;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -136,12 +142,16 @@ public class ClientUtils {
      */
     private static void setSystemProperties() {
 
+        // Build the path to the keystore.
         ClassLoader classLoader = ClientUtils.class.getClassLoader();
+        String path = new File(classLoader.getResource(TRUST_STORE).getPath()).toString();
+        path = path.replace("file:", "");
+        path = path.replace("ws-trust-client-1.0-SNAPSHOT.jar!/wso2carbon.jks","");
+        path = path + "classes/" + TRUST_STORE;
 
 //        Enable this property to debug ssl related problems
 //        System.setProperty("javax.net.debug", "ssl");
-        System.setProperty("javax.net.ssl.trustStore", new File(classLoader
-                .getResource(TRUST_STORE).getPath()).getAbsolutePath());
+        System.setProperty("javax.net.ssl.trustStore", path);
         System.setProperty("javax.net.ssl.trustStorePassword", TRUST_STORE_PASSWORD);
     }
 

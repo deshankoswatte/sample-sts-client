@@ -50,6 +50,7 @@ public class Client {
 
             System.out.println(GREEN_COLOR + "Validate Security Token RSTR: " + RESET_COLOR);
             validateSTRequestAndResponse[1].writeTo(System.out);
+            System.out.println("\n\n");
 
         } catch (SOAPException e) {
             e.printStackTrace();

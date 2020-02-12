@@ -145,4 +145,6 @@ The next step is to add a service provider to consume the STS.
 
 1.  Open the client and run `mvn clean install` on the root folder.
 
-2.  Open the `Client.java` file and run it's main method. 
+2.  Run the command `java -cp ws-trust-client/target/ws-trust-client-1.0-SNAPSHOT.jar org.wso2.samples.is.sts.wstrust.client.Client`.
+
+3.  You will see the requests sent to the STS and the responses received.
