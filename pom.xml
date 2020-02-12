@@ -45,6 +45,7 @@
         <org.apache.velocity.tools.version>2.0</org.apache.velocity.tools.version>
         <org.xmlunit.version>2.6.3</org.xmlunit.version>
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
