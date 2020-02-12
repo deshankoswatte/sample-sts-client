@@ -1,4 +1,4 @@
-package util;
+package org.wso2.samples.is.sts.wstrust.client.util;
 
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPConnection;
@@ -15,17 +15,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import exception.WSTrustClientException;
+import org.wso2.samples.is.sts.wstrust.client.exception.WSTrustClientException;
 
-import static constants.Constants.ACTION_RENEW;
-import static constants.Constants.ACTION_REQUEST;
-import static constants.Constants.ACTION_VALIDATE;
-import static constants.Constants.STS_ENDPOINT_URL;
-import static constants.Constants.TRUST_STORE;
-import static constants.Constants.TRUST_STORE_PASSWORD;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.ACTION_RENEW;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.ACTION_REQUEST;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.ACTION_VALIDATE;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.STS_ENDPOINT_URL;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.TRUST_STORE;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.TRUST_STORE_PASSWORD;
 
 /**
- * Utils class used by the Client to perform common operations.
+ * Utils class used by the org.wso2.samples.is.sts.wstrust.client.Client to perform common operations.
  */
 public class ClientUtils {
 

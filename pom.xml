@@ -25,12 +25,28 @@
                 <artifactId>velocity-tools</artifactId>
                 <version>${org.apache.velocity.tools.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.xmlunit</groupId>
+                <artifactId>xmlunit-core</artifactId>
+                <version>${org.xmlunit.version}</version>
+                <!--<scope>test</scope>-->
+            </dependency>
+            <dependency>
+                <groupId>org.xmlunit</groupId>
+                <artifactId>xmlunit-matchers</artifactId>
+                <version>${org.xmlunit.version}</version>
+                <!--<scope>test</scope>-->
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <properties>
         <org.apache.velocity.version>1.7</org.apache.velocity.version>
         <org.apache.velocity.tools.version>2.0</org.apache.velocity.tools.version>
+        <org.xmlunit.version>2.6.3</org.xmlunit.version>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
 

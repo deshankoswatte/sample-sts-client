@@ -1,4 +1,4 @@
-package constants;
+package org.wso2.samples.is.sts.wstrust.client.constants;
 
 /**
  * Class contains the constant values used across the module.

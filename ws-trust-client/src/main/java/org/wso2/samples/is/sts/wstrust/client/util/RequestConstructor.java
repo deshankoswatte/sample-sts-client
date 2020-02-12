@@ -1,4 +1,4 @@
-package util;
+package org.wso2.samples.is.sts.wstrust.client.util;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -8,12 +8,12 @@ import java.io.File;
 import java.io.StringWriter;
 import java.util.Properties;
 
-import static constants.Constants.CREATION_TIME;
-import static constants.Constants.EXPIRY_TIME;
-import static constants.Constants.RENEW_ST_TEMPLATE;
-import static constants.Constants.REQUEST_ST_TEMPLATE;
-import static constants.Constants.URI;
-import static constants.Constants.VALIDATE_ST_TEMPLATE;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.CREATION_TIME;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.EXPIRY_TIME;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.RENEW_ST_TEMPLATE;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.REQUEST_ST_TEMPLATE;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.URI;
+import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.VALIDATE_ST_TEMPLATE;
 
 /**
  * RequestConstructor class builds the RequestSecurityTokens for each action performed.
