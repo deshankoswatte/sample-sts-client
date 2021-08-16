@@ -140,7 +140,7 @@ public class ClientUtils {
         ClassLoader classLoader = ClientUtils.class.getClassLoader();
         String path = new File(classLoader.getResource(TRUST_STORE).getPath()).toString();
         path = path.replace("file:", "");
-        path = path.replace("ws-trust-client-1.0-SNAPSHOT.jar!/wso2carbon.jks","");
+        path = path.replace("ws-trust-client-1.0-SNAPSHOT.jar!/wso2carbon.jks", "");
         path = path + "classes/" + TRUST_STORE;
 
 //        Enable this property to debug ssl related problems

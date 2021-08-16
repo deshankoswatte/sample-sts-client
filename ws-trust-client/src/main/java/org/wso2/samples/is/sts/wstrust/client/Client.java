@@ -15,6 +15,7 @@ import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.GREEN_C
 import static org.wso2.samples.is.sts.wstrust.client.constants.Constants.RESET_COLOR;
 
 public class Client {
+
     public static void main(String[] args) {
 
         SOAPMessage[] requestSTRequestAndResponse;
@@ -52,11 +53,7 @@ public class Client {
             validateSTRequestAndResponse[1].writeTo(System.out);
             System.out.println("\n\n");
 
-        } catch (SOAPException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (WSTrustClientException e) {
+        } catch (SOAPException | WSTrustClientException | IOException e) {
             e.printStackTrace();
         }
 
